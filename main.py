@@ -6,11 +6,21 @@ def organizationCrawlerMain():
 
 	orgCrawlerMain.main()
 
+def repositoryMain(repoNames):
+	sys.path.append('./RepositoryCrawler')
+	import repoCrawlerMain
+
+	repoCrawlerMain.main(repoNames)
+	
+
 def trendingMain():
 	sys.path.append('./Trending')
 	import trendingRepos
 
-	trendingRepos.main()
+	trendingRepoNames = trendingRepos.main()
+	repoChoice = input("Run repository crawler? (y/n) ")
+	if repoChoice=='y':
+		repositoryMain(trendingRepoNames)
 
 def main():
 	orgChoice = input("Run the organization crawler code? (y/n) ")
