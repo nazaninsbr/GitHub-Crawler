@@ -12,12 +12,6 @@ def getRepoNames(url):
 	content = getPageContent(url)
 	soup = BeautifulSoup(content, 'html.parser')
 	allAs = soup.find_all('a')
-	# allDivsWithClass = [x for x in allDivs if 'class="d-inline-block col-9 mb-1"' in str(x)]
-	# allAs = []
-	# print(allDivsWithClass)
-	# for item in allDivsWithClass:
-	# 	children = item.findChildren("a" , recursive=True)
-	# 	allAs.append(children)
 	names = []
 	for As in allAs:
 		hrefValue = str(As.attrs['href'])
@@ -36,3 +30,4 @@ def main():
 	URL = 'https://github.com/trending'
 	names = getRepoNames(URL)
 	print(names)
+	return names
